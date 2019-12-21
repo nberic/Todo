@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoItem } from '../../models/TodoItem';
+import { TodoService } from '../../services/todo.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -10,26 +11,16 @@ export class TodoListComponent implements OnInit {
 
   private todoList: TodoItem[];
 
-  constructor() { }
+  constructor(private todoService: TodoService) { }
 
   ngOnInit() {
-    this.todoList = [
-      {
-        id: 1,
-        title: "Todo One",
-        completed: false
-      },
-      {
-        id: 2,
-        title: "Todo Two",
-        completed: true
-      },
-      {
-        id: 3,
-        title: "Todo Three",
-        completed: false
-      }
-    ];
+    this.todoService.getTodoList().subscribe((todoItems: TodoItem[]) => {
+      this.todoList = todoItems;
+    });
+  }
+
+  deleteTodoItemFromTodoList(todoItem: TodoItem) {
+    console.log(`Attempt to delete ${ todoItem.id }`);
   }
 
 }
