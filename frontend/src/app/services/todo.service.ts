@@ -24,9 +24,15 @@ export class TodoService {
     return this.http.get<TodoItem[]>(url);
   }
 
-  // Update/toggle 'completed' status on the server
+  // Update/toggle todoItem 'completed' status on the server
   toggleFieldCompleted(todoItem: TodoItem): Observable<TodoItem> {
     const url: string = `${ this.todoListUrl }/${ todoItem.id }`;
     return this.http.put<TodoItem>(url, todoItem, this.httpOptions);
+  }
+
+  // Delete todoItem on the server
+  deleteTodoItem(todoItem: TodoItem): Observable<TodoItem> {
+    const url: string = `${ this.todoListUrl }/${ todoItem.id }`;
+    return this.http.delete<TodoItem>(url, this.httpOptions);
   }
 }

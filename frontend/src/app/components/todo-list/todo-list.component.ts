@@ -20,7 +20,13 @@ export class TodoListComponent implements OnInit {
   }
 
   deleteTodoItemFromTodoList(todoItem: TodoItem) {
-    console.log(`Attempt to delete ${ todoItem.id }`);
+    // Delete the todoItem from UI
+    this.todoList = this.todoList.filter((todo: TodoItem) => todo.id !== todoItem.id);
+
+    // Delete the todoItem on the server
+    this.todoService.deleteTodoItem(todoItem).subscribe((deletedTodoItem: TodoItem) => {
+      console.log(deletedTodoItem);
+    });
   }
 
 }
