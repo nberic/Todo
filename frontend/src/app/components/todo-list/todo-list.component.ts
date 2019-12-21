@@ -24,8 +24,8 @@ export class TodoListComponent implements OnInit {
     this.todoList = this.todoList.filter((todo: TodoItem) => todo.Id !== todoItem.Id);
 
     // Delete the todoItem on the server
-    this.todoService.deleteTodoItem(todoItem).subscribe(() => {
-      console.log(todoItem);
+    this.todoService.deleteTodoItem(todoItem).subscribe((deletedTodoItem: TodoItem) => {
+      console.log(deletedTodoItem);
     });
   }
 

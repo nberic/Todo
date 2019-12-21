@@ -8,8 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class TodoService {
 
-  private todoListUrl: string = 'https://jsonplaceholder.typicode.com/todos';
-  private todoListLimit: number = 5;
+  private todoListUrl: string = 'https://localhost:5001/api/todoitems';
   private httpOptions: { headers: HttpHeaders } = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
