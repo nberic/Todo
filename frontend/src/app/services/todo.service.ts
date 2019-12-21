@@ -30,9 +30,14 @@ export class TodoService {
     return this.http.put<TodoItem>(url, todoItem, this.httpOptions);
   }
 
-  // Delete todoItem on the server
+  // Delete todoItem to the server
   deleteTodoItem(todoItem: TodoItem): Observable<TodoItem> {
     const url: string = `${ this.todoListUrl }/${ todoItem.id }`;
     return this.http.delete<TodoItem>(url, this.httpOptions);
+  }
+
+  // Add todoItem to the server
+  addTodoItem(todoItem: { title: string, completed: boolean }): Observable<TodoItem> {
+    return this.http.post<TodoItem>(this.todoListUrl, todoItem, this.httpOptions);
   }
 }

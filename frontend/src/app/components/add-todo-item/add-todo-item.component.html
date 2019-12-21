@@ -1,1 +1,4 @@
-<p>add-todo-item works!</p>
+<form class="form" (ngSubmit)="onSubmit()">
+    <input type="text" name="title" [(ngModel)]="title" placeholder="Add Todo Item...">
+    <input type="submit" value="Submit" class="btn">
+</form>

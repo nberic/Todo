@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-add-todo-item',
@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddTodoItemComponent implements OnInit {
 
+  @Output() addTodoItem: EventEmitter<{ title: string, completed: boolean }> = new EventEmitter();
+  
+  private title: string;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onSubmit() {
+    const todoItem: { title: string, completed: boolean } = {
+      title: this.title,
+      completed: false
+    };
+    this.addTodoItem.emit(todoItem);
   }
 
 }
