@@ -21,7 +21,7 @@ export class TodoListComponent implements OnInit {
 
   deleteTodoItemFromTodoList(todoItem: TodoItem) {
     // Delete the todoItem from UI
-    this.todoList = this.todoList.filter((todo: TodoItem) => todo.id !== todoItem.id);
+    this.todoList = this.todoList.filter((todo: TodoItem) => todo.Id !== todoItem.Id);
 
     // Delete the todoItem on the server
     this.todoService.deleteTodoItem(todoItem).subscribe(() => {
@@ -29,7 +29,7 @@ export class TodoListComponent implements OnInit {
     });
   }
 
-  addTodoItemInTodoList(todoItem: { title: string, completed: boolean}) {
+  addTodoItemInTodoList(todoItem: { Title: string, Completed: boolean}) {
     // Add to the server
     this.todoService.addTodoItem(todoItem).subscribe((addedTodoItem: TodoItem) => {
       // Add it on the UI

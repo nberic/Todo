@@ -21,14 +21,14 @@ export class TodoItemComponent implements OnInit {
   setClasses() {
     const classes = {
       todo: true,
-      "is-complete": this.todoItem.completed
+      "is-complete": this.todoItem.Completed
     };
     return classes;
   }
 
   onToggle(todoItem: TodoItem) {
     // Toggle in UI
-    todoItem.completed = !todoItem.completed;
+    todoItem.Completed = !todoItem.Completed;
     // Toggle on server
     this.todoService.toggleFieldCompleted(todoItem).subscribe((updatedTodoItem: TodoItem) => {
       console.log(updatedTodoItem);

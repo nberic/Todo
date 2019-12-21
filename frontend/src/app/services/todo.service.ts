@@ -20,24 +20,24 @@ export class TodoService {
 
   // Get todoList from server
   getTodoList(): Observable<TodoItem[]> {
-    const url: string = `${ this.todoListUrl }?_limit=${ this.todoListLimit }`;
+    const url: string = `${ this.todoListUrl }`;
     return this.http.get<TodoItem[]>(url);
   }
 
   // Update/toggle todoItem 'completed' status on the server
   toggleFieldCompleted(todoItem: TodoItem): Observable<TodoItem> {
-    const url: string = `${ this.todoListUrl }/${ todoItem.id }`;
+    const url: string = `${ this.todoListUrl }/${ todoItem.Id }`;
     return this.http.put<TodoItem>(url, todoItem, this.httpOptions);
   }
 
   // Delete todoItem to the server
   deleteTodoItem(todoItem: TodoItem): Observable<TodoItem> {
-    const url: string = `${ this.todoListUrl }/${ todoItem.id }`;
+    const url: string = `${ this.todoListUrl }/${ todoItem.Id }`;
     return this.http.delete<TodoItem>(url, this.httpOptions);
   }
 
   // Add todoItem to the server
-  addTodoItem(todoItem: { title: string, completed: boolean }): Observable<TodoItem> {
+  addTodoItem(todoItem: { Title: string, Completed: boolean }): Observable<TodoItem> {
     return this.http.post<TodoItem>(this.todoListUrl, todoItem, this.httpOptions);
   }
 }
