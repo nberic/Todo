@@ -7,7 +7,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class AddTodoItemComponent implements OnInit {
 
-  @Output() addTodoItem: EventEmitter<{ Title: string, Completed: boolean }> = new EventEmitter();
+  @Output() addTodoItem: EventEmitter<{ title: string, completed: boolean }> = new EventEmitter();
   
   private title: string;
 
@@ -17,9 +17,9 @@ export class AddTodoItemComponent implements OnInit {
   }
 
   onSubmit() {
-    const todoItem: { Title: string, Completed: boolean } = {
-      Title: this.title,
-      Completed: false
+    const todoItem: { title: string, completed: boolean } = {
+      title: this.title,
+      completed: false
     };
     this.addTodoItem.emit(todoItem);
   }
